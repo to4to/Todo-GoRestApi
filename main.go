@@ -23,13 +23,20 @@ func getTodos(context *gin.Context) {
 }
 
 func addTodo(context *gin.Context) {
+	var newTodo todo
 
+	if err := context.BindJSON(&newTodo); err != nil {
+		return
+	}
+	todos = append(todos, newTodo)
+	context.IndentedJSON(http.StatusCreated, newTodo)
 }
 
 func main() {
 
 	router := gin.Default()
 	router.GET("/todos", getTodos)
+	router.POST("/todos", addTodo)
 	router.Run("localhost:7677")
 
 }
