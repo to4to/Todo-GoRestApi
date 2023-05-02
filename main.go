@@ -7,13 +7,17 @@ import (
 
 type todo struct {
 	ID        string `json:"id"`
-	Item      string `json:"title"`
+	Item      string `json:"item"`
 	Completed bool   `json:"completed"`
 }
 
 var todos = []todo{{ID: "1", Item: "Clean Room", Completed: false},
 	{ID: "1", Item: "Read Book", Completed: false},
 	{ID: "1", Item: "Record Video", Completed: false},
+}
+
+func getTodoById() {
+
 }
 
 func getTodos(context *gin.Context) {
